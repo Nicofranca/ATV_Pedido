@@ -5,28 +5,25 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
-
-import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "pedido")
-public class Pedido {
+@Table(name = "funcionario")
+public class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "data_pedido")
-    @CreatedDate
-    private LocalDate dataPedido;
+    @Column
+    private String nome;
 
-    @OneToMany(mappedBy = "pedido")
-    private List<ItemPedido> pedidos;
+    @Column
+    private String email;
 
+    @ManyToOne
+    private Departamento departamento;
 }
