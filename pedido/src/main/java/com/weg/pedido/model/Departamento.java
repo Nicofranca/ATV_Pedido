@@ -23,6 +23,10 @@ public class Departamento {
     @Column
     private String nome;
 
-
+    @OneToMany(mappedBy = "departamento")
     private List<Funcionario> listaFuncionario;
+
+    public Departamento(String nome) {
+        this.nome = nome;
+    }
 }

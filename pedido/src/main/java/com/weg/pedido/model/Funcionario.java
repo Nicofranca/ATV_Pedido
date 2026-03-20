@@ -25,5 +25,11 @@ public class Funcionario {
     private String email;
 
     @ManyToOne
+    @JoinColumn(name = "id_departamento")
     private Departamento departamento;
+
+    public Funcionario(String nome, String email) {
+        this.nome = nome;
+        this.email = email;
+    }
 }
