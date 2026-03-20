@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface FuncionarioRepositoryJpa extends JpaRepository<Funcionario, Long> {
-    List<Funcionario> findByName(String nome);
+    List<Funcionario> findByNome(String nome);
     List<Funcionario> findByDepartamentoId(Long id);
     Funcionario findByIdAndNome(Long id, String nome);
 

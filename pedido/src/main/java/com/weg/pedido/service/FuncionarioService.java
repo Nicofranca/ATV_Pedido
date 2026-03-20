@@ -76,7 +76,7 @@ public class FuncionarioService {
 
     public List<FuncionarioResponseDto> findByName(String nome){
         try {
-            return funcionarioRepositoryJpa.findByName(nome).stream()
+            return funcionarioRepositoryJpa.findByNome(nome).stream()
                     .map(funcionarioMapper::responseToEntity)
                     .toList();
         } catch (RuntimeException e) {
