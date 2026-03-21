@@ -1,10 +1,9 @@
 package com.weg.pedido.controller;
 
 
-import com.weg.pedido.dto.funcionario.dtos.FuncionarioRequestDto;
-import com.weg.pedido.dto.funcionario.dtos.FuncionarioResponseDto;
-import com.weg.pedido.service.FuncionarioService;
-import lombok.NoArgsConstructor;
+import com.weg.pedido.dto.funcionario.dtos.PedidoRequestDto;
+import com.weg.pedido.dto.funcionario.dtos.PedidoResponseDto;
+import com.weg.pedido.service.PedidoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,39 +12,39 @@ import java.util.List;
 @RestController
 @RequestMapping("/funcionario")
 public class FuncionarioController {
-    private final FuncionarioService funcionarioService;
+    private final PedidoService pedidoService;
 
-    public FuncionarioController(FuncionarioService funcionarioService) {
-        this.funcionarioService = funcionarioService;
+    public FuncionarioController(PedidoService pedidoService) {
+        this.pedidoService = pedidoService;
     }
 
     @PostMapping
-    public ResponseEntity<FuncionarioResponseDto> save(@RequestBody FuncionarioRequestDto funcionarioRequestDto) {
-        return ResponseEntity.ok(funcionarioService.save(funcionarioRequestDto));
+    public ResponseEntity<PedidoResponseDto> save(@RequestBody PedidoRequestDto pedidoRequestDto) {
+        return ResponseEntity.ok(pedidoService.save(pedidoRequestDto));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<FuncionarioResponseDto> findById(@PathVariable Long id) {
-        return ResponseEntity.ok(funcionarioService.findById(id));
+    public ResponseEntity<PedidoResponseDto> findById(@PathVariable Long id) {
+        return ResponseEntity.ok(pedidoService.findById(id));
     }
 
     @GetMapping
-    public ResponseEntity<List<FuncionarioResponseDto>> findAll() {
-        return ResponseEntity.ok(funcionarioService.findAll());
+    public ResponseEntity<List<PedidoResponseDto>> findAll() {
+        return ResponseEntity.ok(pedidoService.findAll());
     }
 
     @GetMapping("/departamento/{id}")
-    public ResponseEntity<List<FuncionarioResponseDto>> findByIdDepartamento(@PathVariable Long id) {
-        return ResponseEntity.ok(funcionarioService.findByIdDepartamento(id));
+    public ResponseEntity<List<PedidoResponseDto>> findByIdDepartamento(@PathVariable Long id) {
+        return ResponseEntity.ok(pedidoService.findByIdDepartamento(id));
     }
 
     @GetMapping("/{nome}")
-    public ResponseEntity<List<FuncionarioResponseDto>> findByName(@PathVariable String nome) {
-        return ResponseEntity.ok(funcionarioService.findByName(nome));
+    public ResponseEntity<List<PedidoResponseDto>> findByName(@PathVariable String nome) {
+        return ResponseEntity.ok(pedidoService.findByName(nome));
     }
 
     @GetMapping("/{id}/{nome}")
-    public ResponseEntity<FuncionarioResponseDto> findByIdAndName(@PathVariable Long id, @PathVariable String nome) {
-        return ResponseEntity.ok(funcionarioService.findByIdAndName(id, nome));
+    public ResponseEntity<PedidoResponseDto> findByIdAndName(@PathVariable Long id, @PathVariable String nome) {
+        return ResponseEntity.ok(pedidoService.findByIdAndName(id, nome));
     }
 }

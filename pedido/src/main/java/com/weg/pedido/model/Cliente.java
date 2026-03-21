@@ -6,30 +6,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "funcionario")
-public class Funcionario {
+@Table(name = "cliente")
+public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 
     @Column
     private String nome;
 
-    @Column
-    private String email;
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> listaPedido;
 
-    @ManyToOne
-    @JoinColumn(name = "id_departamento")
-    private Departamento departamento;
-
-    public Funcionario(String nome, String email) {
+    public Cliente(String nome) {
         this.nome = nome;
-        this.email = email;
     }
 }

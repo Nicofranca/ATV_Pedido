@@ -1,7 +1,6 @@
 package com.weg.pedido.dto.departamento.dtos;
 
-public record DepartamentoResponseDto(
-        Long id,
+public record ClienteRequestDto(
         String nome
 ) {
 }

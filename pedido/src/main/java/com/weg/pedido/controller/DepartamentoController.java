@@ -1,34 +1,34 @@
 package com.weg.pedido.controller;
 
-import com.weg.pedido.dto.departamento.dtos.DepartamentoRequestDto;
-import com.weg.pedido.dto.departamento.dtos.DepartamentoResponseDto;
-import com.weg.pedido.service.DepartamentoService;
+import com.weg.pedido.dto.departamento.dtos.ClienteRequestDto;
+import com.weg.pedido.dto.departamento.dtos.ClienteResponseDto;
+import com.weg.pedido.service.ClienteService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/departamento")
+@RequestMapping("/cliente")
 public class DepartamentoController {
-    private final DepartamentoService departamentoService;
+    private final ClienteService clienteService;
 
-    public DepartamentoController(DepartamentoService departamentoService) {
-        this.departamentoService = departamentoService;
+    public DepartamentoController(ClienteService clienteService) {
+        this.clienteService = clienteService;
     }
 
     @PostMapping
-    public ResponseEntity<DepartamentoResponseDto> save(@RequestBody DepartamentoRequestDto departamentoRequestDto) {
-        return ResponseEntity.ok(departamentoService.save(departamentoRequestDto));
+    public ResponseEntity<ClienteResponseDto> save(@RequestBody ClienteRequestDto clienteRequestDto) {
+        return ResponseEntity.ok(clienteService.save(clienteRequestDto));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DepartamentoResponseDto> findById(@PathVariable Long id) {
-        return ResponseEntity.ok(departamentoService.findById(id));
+    public ResponseEntity<ClienteResponseDto> findById(@PathVariable Long id) {
+        return ResponseEntity.ok(clienteService.findById(id));
     }
 
     @GetMapping
-    public ResponseEntity<List<DepartamentoResponseDto>> findAll() {
-        return ResponseEntity.ok(departamentoService.findAll());
+    public ResponseEntity<List<ClienteResponseDto>> findAll() {
+        return ResponseEntity.ok(clienteService.findAll());
     }
 }

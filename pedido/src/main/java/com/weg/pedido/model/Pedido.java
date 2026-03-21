@@ -6,27 +6,26 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "departamento")
-public class Departamento {
+@Table(name = "pedido")
+public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column
-    private String nome;
+    private String descricao;
 
-    @OneToMany(mappedBy = "departamento")
-    private List<Funcionario> listaFuncionario;
+    @ManyToOne
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
 
-    public Departamento(String nome) {
-        this.nome = nome;
+    public Pedido(String descricao) {
+        this.descricao = descricao;
     }
 }
