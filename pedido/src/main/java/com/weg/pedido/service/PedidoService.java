@@ -1,8 +1,9 @@
 package com.weg.pedido.service;
 
-import com.weg.pedido.dto.funcionario.dtos.PedidoRequestDto;
-import com.weg.pedido.dto.funcionario.dtos.PedidoResponseDto;
-import com.weg.pedido.dto.funcionario.mapper.PedidoMapper;
+import com.weg.pedido.dto.pedido.dtos.PedidoDescricaoRequestDto;
+import com.weg.pedido.dto.pedido.dtos.PedidoRequestDto;
+import com.weg.pedido.dto.pedido.dtos.PedidoResponseDto;
+import com.weg.pedido.dto.pedido.mapper.PedidoMapper;
 import com.weg.pedido.model.Cliente;
 import com.weg.pedido.model.Pedido;
 import com.weg.pedido.repository.ClienteRepositoryJpa;
@@ -54,6 +55,24 @@ public class PedidoService {
         }
     }
 
+    public List<PedidoResponseDto> findByClienteId(Long id){
+        try {
+            Cliente cliente = clienteRepositoryJpa.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Erro ao buscar pedido de cliente! "));
+
+            if (cliente == null){
+                throw new RuntimeException("Insira um Cliente já existente! ");
+            }
+
+            return pedidoRepositoryJpa.findByClienteId(cliente.getId())
+                    .stream()
+                    .map(pedidoMapper::responseToEntity)
+                    .toList();
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public List<PedidoResponseDto> findAll(){
         try {
             return pedidoRepositoryJpa.findAll().stream()
@@ -64,9 +83,9 @@ public class PedidoService {
         }
     }
 
-    public List<PedidoResponseDto> findByIdDepartamento(Long id){
+    public List<PedidoResponseDto> findByPedidoId(Long id){
         try {
-            return pedidoRepositoryJpa.findByDepartamentoId(id).stream()
+            return pedidoRepositoryJpa.findByPedidoId(id).stream()
                     .map(pedidoMapper::responseToEntity)
                     .toList();
         } catch (RuntimeException e) {
@@ -74,9 +93,9 @@ public class PedidoService {
         }
     }
 
-    public List<PedidoResponseDto> findByName(String nome){
+    public List<PedidoResponseDto> findByClienteNome(String nome){
         try {
-            return pedidoRepositoryJpa.findByNome(nome).stream()
+            return pedidoRepositoryJpa.findByClienteNome(nome).stream()
                     .map(pedidoMapper::responseToEntity)
                     .toList();
         } catch (RuntimeException e) {
@@ -84,9 +103,9 @@ public class PedidoService {
         }
     }
 
-    public PedidoResponseDto findByIdAndName(Long id, String nome){
+    public PedidoResponseDto findByIdAndDescricao(PedidoDescricaoRequestDto pedidoDescricaoRequestDto){
         try {
-            Pedido pedido = pedidoRepositoryJpa.findByIdAndNome(id, nome);
+            Pedido pedido = pedidoRepositoryJpa.findByIdAndDescricao(pedidoDescricaoRequestDto.id(), pedidoDescricaoRequestDto.descricao());
 
             return pedidoMapper.responseToEntity(pedido);
         } catch (RuntimeException e) {

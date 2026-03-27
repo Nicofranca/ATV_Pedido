@@ -1,7 +1,7 @@
-package com.weg.pedido.dto.departamento.mapper;
+package com.weg.pedido.dto.cliente.mapper;
 
-import com.weg.pedido.dto.departamento.dtos.ClienteRequestDto;
-import com.weg.pedido.dto.departamento.dtos.ClienteResponseDto;
+import com.weg.pedido.dto.cliente.dtos.ClienteRequestDto;
+import com.weg.pedido.dto.cliente.dtos.ClienteResponseDto;
 import com.weg.pedido.model.Cliente;
 import org.springframework.stereotype.Component;
 

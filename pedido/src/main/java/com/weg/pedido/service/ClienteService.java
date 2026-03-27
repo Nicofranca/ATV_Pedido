@@ -1,8 +1,8 @@
 package com.weg.pedido.service;
 
-import com.weg.pedido.dto.departamento.dtos.ClienteRequestDto;
-import com.weg.pedido.dto.departamento.dtos.ClienteResponseDto;
-import com.weg.pedido.dto.departamento.mapper.ClienteMapper;
+import com.weg.pedido.dto.cliente.dtos.ClienteRequestDto;
+import com.weg.pedido.dto.cliente.dtos.ClienteResponseDto;
+import com.weg.pedido.dto.cliente.mapper.ClienteMapper;
 import com.weg.pedido.model.Cliente;
 import com.weg.pedido.repository.ClienteRepositoryJpa;
 import org.springframework.stereotype.Service;

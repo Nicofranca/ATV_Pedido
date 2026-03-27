@@ -8,8 +8,10 @@ import java.util.List;
 
 @Repository
 public interface PedidoRepositoryJpa extends JpaRepository<Pedido, Long> {
-    List<Pedido> findByNome(String nome);
-    List<Pedido> findByDepartamentoId(Long id);
+    List<Pedido> findByClienteNome(String nome);
+    List<Pedido> findByPedidoId(Long id);
     Pedido findByIdAndNome(Long id, String nome);
+    List<Pedido> findByClienteId(Long idCliente);
+    Pedido findByIdAndDescricao(Long id, String descricao);
 
 }

@@ -1,4 +1,4 @@
-package com.weg.pedido.dto.funcionario.dtos;
+package com.weg.pedido.dto.pedido.dtos;
 
 public record PedidoRequestDto(
         String descricao,
