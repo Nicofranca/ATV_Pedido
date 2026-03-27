@@ -4,6 +4,7 @@ import com.weg.pedido.dto.item.ItemPedidoRequestDTO;
 import com.weg.pedido.dto.item.ItemPedidoResponseDTO;
 import com.weg.pedido.service.ItemPedidoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,26 +18,31 @@ public class ItemPedidoController {
 
     @PostMapping
     public ResponseEntity<ItemPedidoResponseDTO> save(@RequestBody ItemPedidoRequestDTO itemPedidoRequestDTO){
-        return ResponseEntity.ok(itemPedidoService.save(itemPedidoRequestDTO));
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(itemPedidoService.save(itemPedidoRequestDTO));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ItemPedidoResponseDTO> findById(@PathVariable Long id) {
-        return ResponseEntity.ok(itemPedidoService.findById(id));
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(itemPedidoService.findById(id));
     }
 
     @GetMapping
     public ResponseEntity<List<ItemPedidoResponseDTO>> findAll() {
-        return ResponseEntity.ok(itemPedidoService.findAll());
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(itemPedidoService.findAll());
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<ItemPedidoResponseDTO> update(@PathVariable Long id, @RequestBody ItemPedidoRequestDTO itemPedidoRequestDTO) {
-        return ResponseEntity.ok(itemPedidoService.update(id, itemPedidoRequestDTO));
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(itemPedidoService.update(id, itemPedidoRequestDTO));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<ItemPedidoResponseDTO> delete(@PathVariable Long id) {
-        return ResponseEntity.ok(itemPedidoService.delete(id));
+        return ResponseEntity.status(HttpStatus.NO_CONTENT)
+                .body(itemPedidoService.delete(id));
     }
 }
