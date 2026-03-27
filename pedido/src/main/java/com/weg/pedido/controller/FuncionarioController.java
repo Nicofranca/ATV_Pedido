@@ -44,8 +44,8 @@ public class FuncionarioController {
         return ResponseEntity.ok(funcionarioService.findByName(nome));
     }
 
-    @GetMapping("/{id}/{nome}")
-    public ResponseEntity<FuncionarioResponseDto> findByIdAndName(@PathVariable Long id, @PathVariable String nome) {
+    @GetMapping("/{id}")
+    public ResponseEntity<FuncionarioResponseDto> findByIdAndName(@PathVariable Long id, @RequestBody String nome) {
         return ResponseEntity.ok(funcionarioService.findByIdAndName(id, nome));
     }
 }
