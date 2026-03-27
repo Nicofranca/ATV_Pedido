@@ -23,6 +23,10 @@ public class Categoria {
     @Column
     private String nome;
 
-    @ManyToOne
+    @OneToMany(mappedBy = "categoria")
     private List<Produto> listaProdutos;
+
+    public Categoria(String nome) {
+        this.nome = nome;
+    }
 }
