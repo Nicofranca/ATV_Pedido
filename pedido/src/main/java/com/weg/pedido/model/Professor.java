@@ -23,7 +23,7 @@ public class Professor {
     @Column
     private String nome;
 
-    @OneToMany(mappedBy = "curso")
+    @OneToMany(mappedBy = "professor")
     private List<Curso> cursos;
 
     public Professor(String nome) {

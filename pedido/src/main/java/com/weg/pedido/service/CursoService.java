@@ -63,7 +63,7 @@ public class CursoService {
     }
 
     public CursoResponseDTO buscarPorNomeCurso(String nome){
-        Curso curso = cursoRepositoryJPA.findByNome(nome);
+        Curso curso = cursoRepositoryJPA.findByTitulo(nome);
 
         return cursoMapper.responseToEntity(curso);
     }
