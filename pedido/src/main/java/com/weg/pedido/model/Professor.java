@@ -9,12 +9,12 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@NoArgsConstructor
 @AllArgsConstructor
-@Getter
+@NoArgsConstructor
 @Setter
-@Table(name = "categoria")
-public class Categoria {
+@Getter
+@Table(name = "professor")
+public class Professor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +23,10 @@ public class Categoria {
     @Column
     private String nome;
 
-    @OneToMany(mappedBy = "categoria")
-    private List<Produto> listaProdutos;
+    @OneToMany(mappedBy = "curso")
+    private List<Curso> cursos;
 
-    public Categoria(String nome) {
+    public Professor(String nome) {
         this.nome = nome;
     }
 }

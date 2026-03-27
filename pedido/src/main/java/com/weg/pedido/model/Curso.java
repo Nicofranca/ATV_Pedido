@@ -5,31 +5,28 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Entity
-@NoArgsConstructor
 @AllArgsConstructor
-@Getter
+@NoArgsConstructor
 @Setter
-@Table(name = "categoria")
-public class Produto {
+@Getter
+@Table(name = "curso")
+public class Curso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
-    private String nome;
-
-    @Column
-    private Double preco;
+    private String titulo;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
+    @JoinColumn(name = "professor_id")
+    private Professor professor;
 
-    public Produto(String nome, Double preco) {
-        this.nome = nome;
-        this.preco = preco;
+    public Curso(String titulo) {
+        this.titulo = titulo;
     }
 }
